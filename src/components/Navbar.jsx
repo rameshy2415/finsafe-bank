@@ -68,7 +68,7 @@ const Navbar = () => {
             sx={{ fontWeight: "bold" }}
             color="secondary"
           >
-            FineSafe Bank
+            FinSafe Bank
           </Typography>
         </Box>
 
