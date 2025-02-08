@@ -26,18 +26,18 @@ const Dashboard = () => {
       title: "0% Interest for 12 Months",
       description:
         "Apply for a credit card today and enjoy 0% interest on purchases for the first 12 months.",
-      image: "https://via.placeholder.com/300x200",
+      image: "https://via.assets.so/img.jpg?w=300&h=200&tc=blue",
     },
     {
       title: "Save More with Fixed Deposits",
       description:
         "Earn up to 8% interest on fixed deposits for 5 years or more.",
-      image: "https://via.placeholder.com/300x200",
+      image: "https://via.assets.so/img.jpg?w=300&h=200&tc=blue",
     },
     {
       title: "Personal Loan Offers",
       description: "Get a personal loan at an interest rate as low as 10%.",
-      image: "https://via.placeholder.com/300x200",
+      image: "https://via.assets.so/img.jpg?w=300&h=200&tc=blue",
     },
   ];
 
@@ -56,21 +56,21 @@ const Dashboard = () => {
                 <Slider {...sliderSettings}>
                   <Box>
                     <img
-                      src="https://via.placeholder.com/800x300"
+                      src="https://via.assets.so/img.jpg?w=800&h=300&tc=blue"
                       alt="Announcement 1"
                       style={{ width: "100%", borderRadius: "8px" }}
                     />
                   </Box>
                   <Box>
                     <img
-                      src="https://via.placeholder.com/800x300"
+                      src="https://via.assets.so/img.jpg?w=800&h=300&tc=blue"
                       alt="Announcement 2"
                       style={{ width: "100%", borderRadius: "8px" }}
                     />
                   </Box>
                   <Box>
                     <img
-                      src="https://via.placeholder.com/800x300"
+                      src="https://via.assets.so/img.jpg?w=800&h=300&tc=blue"
                       alt="Announcement 3"
                       style={{ width: "100%", borderRadius: "8px" }}
                     />
@@ -91,13 +91,14 @@ const Dashboard = () => {
           {offers.map((offer, index) => (
             <Grid2 item xs={12} sm={6} md={4} key={index}>
               <Card sx={{ maxWidth: 345 }}>
+              <CardContent>
                 <CardMedia
                   component="img"
                   alt={offer.title}
                   height="140"
                   image={offer.image}
                 />
-                <CardContent>
+               
                   <Typography
                     variant="h6"
                     component="div"

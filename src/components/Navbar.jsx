@@ -17,23 +17,35 @@ import {
   Link,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import LoginIcon from "@mui/icons-material/Login";
+/* import AccountCircle from "@mui/icons-material/AccountCircle";
+import LoginIcon from "@mui/icons-material/Login"; */
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import { useContext } from "react";
+import { UserContext } from "../context/AuthProvider";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
+  const { auth, login, keycloak } = useContext(UserContext);
+
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  console.log("Auth in Nav", auth);
+  console.log("KeyCLoak in Nav", keycloak);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+  const userLogin = () => {
+    console.log("Login Click");
+    login();
   };
+
+  /*  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  }; */
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -93,9 +105,9 @@ const Navbar = () => {
             color="secondary"
             variant="outlined"
             sx={{ mr: 2 }}
-            href="#outlined-buttons"
+            onClick={userLogin}
           >
-            Login
+            {auth ? "Logout" : "Login"}
           </Button>
           {/* <IconButton color="inherit">
             <LoginIcon />
@@ -117,6 +129,7 @@ const Navbar = () => {
             variant="outlined"
             sx={{ mr: 2 }}
             href="#outlined-buttons"
+            onClick={userLogin}
           >
             Login
           </Button>

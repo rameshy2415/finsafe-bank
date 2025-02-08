@@ -1,4 +1,4 @@
-import { CssBaseline, Container, ThemeProvider, Box } from "@mui/material";
+import { CssBaseline,  ThemeProvider, Box } from "@mui/material";
 import theme from "./theme";
 import "./index.css";
 import Navbar from "./components/Navbar";
