@@ -87,33 +87,41 @@ const Dashboard = () => {
         <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
           Exclusive Offers
         </Typography>
-        <Grid2 container spacing={3}>
-          {offers.map((offer, index) => (
-            <Grid2 item xs={12} sm={6} md={4} key={index}>
-              <Card sx={{ maxWidth: 345 }}>
-              <CardContent>
-                <CardMedia
-                  component="img"
-                  alt={offer.title}
-                  height="140"
-                  image={offer.image}
-                />
-               
-                  <Typography
-                    variant="h6"
-                    component="div"
-                    sx={{ fontWeight: "bold" }}
-                  >
-                    {offer.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {offer.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid2>
-          ))}
-        </Grid2>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Grid2 container spacing={3}>
+            {offers.map((offer, index) => (
+              <Grid2 item xs={12} sm={6} md={4} key={index}>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardContent>
+                    <CardMedia
+                      component="img"
+                      alt={offer.title}
+                      height="140"
+                      image={offer.image}
+                    />
+
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      sx={{ fontWeight: "bold" }}
+                    >
+                      {offer.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {offer.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid2>
+            ))}
+          </Grid2>
+        </Box>
       </Box>
     </Container>
   );
