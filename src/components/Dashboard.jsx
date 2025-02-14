@@ -8,6 +8,11 @@ import {
   Container,
 } from "@mui/material";
 import Slider from "react-slick";
+/* import img from "../assets/FB716-x-298.jpg";
+import img2 from "../assets/FB2_716x298-new.jpg";
+import img3 from "../assets/FB3_XCL_716x298-new.jpg"; */
+/* import img4 from "../assets/LOCC-716x298-30Jan.jpg"
+import img5 from "../assets/FB5_716-298-20Jan.png" */
 
 const Dashboard = () => {
   const sliderSettings = {
@@ -20,6 +25,12 @@ const Dashboard = () => {
     autoplaySpeed: 3000,
     width: 345,
   };
+
+  const images = [
+    "/FB716-x-298.jpg",
+    "/FB2_716x298-new.jpg",
+    "/FB3_XCL_716x298-new.jpg",
+  ];
 
   const offers = [
     {
@@ -54,27 +65,36 @@ const Dashboard = () => {
             <Card sx={{ boxShadow: 0 }}>
               <CardContent>
                 <Slider {...sliderSettings}>
-                  <Box>
+                  {images.map((img, index) => (
+                    <Box
+                      key={index}
+                      component="img"
+                      src={img}
+                      alt={`Slide ${index + 1}`}
+                      sx={{ width: "100%", borderRadius: 2 }}
+                    />
+                  ))}
+                  {/* <Box>
                     <img
-                      src="https://via.assets.so/img.jpg?w=800&h=300&tc=blue"
-                      alt="Announcement 1"
+                      src={img}
+                      alt="Offer 1"
                       style={{ width: "100%", borderRadius: "8px" }}
                     />
                   </Box>
                   <Box>
                     <img
-                      src="https://via.assets.so/img.jpg?w=800&h=300&tc=blue"
-                      alt="Announcement 2"
+                      src={img2}
+                      alt="Offer 2"
                       style={{ width: "100%", borderRadius: "8px" }}
                     />
                   </Box>
                   <Box>
                     <img
-                      src="https://via.assets.so/img.jpg?w=800&h=300&tc=blue"
-                      alt="Announcement 3"
+                      src={img3}
+                      alt="Offer 3"
                       style={{ width: "100%", borderRadius: "8px" }}
                     />
-                  </Box>
+                  </Box> */}
                 </Slider>
               </CardContent>
             </Card>

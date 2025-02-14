@@ -1,4 +1,4 @@
-import { CssBaseline,  ThemeProvider, Box } from "@mui/material";
+import { CssBaseline, ThemeProvider, Box } from "@mui/material";
 import theme from "./theme";
 import "./index.css";
 import Navbar from "./components/Navbar";
@@ -25,10 +25,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             {/* <Route path="/accounts" element={<Accounts />} />
-        <Route path="/transfer" element={<Transfer />} />
-        <Route path="/bill-payments" element={<BillPayments />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/login" element={<Login />} /> */}
+            <Route path="/transfer" element={<Transfer />} />
+            <Route path="/bill-payments" element={<BillPayments />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/login" element={<Login />} /> */}
           </Routes>
           <Footer />
         </Box>

@@ -4,7 +4,6 @@ import axios from "axios";
 
 export const AuthContext = createContext(null);
 
-// eslint-disable-next-line react/prop-types
 const KeycloakProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
   const keycloak = getKeycloak(); // Use singleton instance

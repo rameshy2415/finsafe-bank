@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import { useState } from "react";
 import {
   AppBar,
@@ -15,41 +14,96 @@ import {
   Menu,
   MenuItem,
   Link,
+  Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-/* import AccountCircle from "@mui/icons-material/AccountCircle";
-import LoginIcon from "@mui/icons-material/Login"; */
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import { useContext } from "react";
 import { UserContext } from "../context/AuthProvider";
 
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import proPic from "../assets/1.jpg";
+
+//import userService from '../http/userService'
+
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
-
-  const { auth, login, keycloak } = useContext(UserContext);
-
+  const { auth, logout, login, keycloak } = useContext(UserContext);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [anchorPEl, setAnchorPEl] = useState(null);
+  const open = Boolean(anchorPEl);
+  //const [flag, setFlag] = useState(false);
 
-  console.log("Auth in Nav", auth);
-  console.log("KeyCLoak in Nav", keycloak);
+  //console.log("Auth in Nav", auth);
+  //console.log("KeyCLoak in Nav", keycloak);
+
+  /*   const keycloak = getKeycloak(); // Use singleton instance
+  useEffect(() => {
+    keycloak.init({ onLoad: "check-sso" }).then(auth => {
+      setFlag(auth);
+    });
+  }, []); */
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const userLogin = () => {
+  let name = "";
+  if (auth) {
+    name = keycloak?.tokenParsed?.name;
+  }
+
+  const loginHandler = async () => {
     console.log("Login Click");
     login();
   };
 
-  /*  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  }; */
+  const logoutHandler = () => {
+    console.log("logoutHandler Click");
+    keycloak.logout();
+  };
+
+  const handleClick = (event) => {
+    setAnchorPEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorPEl(null);
+  };
+
+  const handleProfile = () => {
+    console.log("handleProfile Click");
+    logout();
+  };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  let profileMenu = (
+    <Box>
+      <Button
+        size="small"
+        color="secondary"
+        onClick={handleClick}
+        sx={{ mr: 2 }}
+        startIcon={<Avatar src={proPic} sx={{ width: 24, height: 24 }} />}
+      >
+        {name}
+      </Button>
+      <Menu anchorEl={anchorPEl} open={open} onClose={handleClose}>
+        <MenuItem onClick={handleProfile}>
+          <AccountCircleIcon color="secondary" sx={{ marginRight: 1 }} />{" "}
+          Profile
+        </MenuItem>
+        <MenuItem onClick={logoutHandler}>
+          <LogoutIcon color="secondary" sx={{ marginRight: 1 }} /> Logout
+        </MenuItem>
+      </Menu>
+    </Box>
+  );
 
   const menuItems = [
     { text: "Dashboard", path: "/" },
@@ -105,10 +159,22 @@ const Navbar = () => {
             color="secondary"
             variant="outlined"
             sx={{ mr: 2 }}
-            onClick={userLogin}
+            onClick={!auth ? loginHandler : logoutHandler}
           >
             {auth ? "Logout" : "Login"}
           </Button>
+
+          {profileMenu}
+
+          {/* <Button
+            size="small"
+            color="secondary"
+            variant="outlined"
+            sx={{ mr: 2 }}
+            onClick={!auth ? loginHandler : logoutHandler}
+          >
+            {auth ? name : "Login"}
+          </Button> */}
           {/* <IconButton color="inherit">
             <LoginIcon />
           </IconButton>
@@ -129,7 +195,7 @@ const Navbar = () => {
             variant="outlined"
             sx={{ mr: 2 }}
             href="#outlined-buttons"
-            onClick={userLogin}
+            onClick={loginHandler}
           >
             Login
           </Button>
