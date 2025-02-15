@@ -32,17 +32,6 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorPEl, setAnchorPEl] = useState(null);
   const open = Boolean(anchorPEl);
-  //const [flag, setFlag] = useState(false);
-
-  //console.log("Auth in Nav", auth);
-  //console.log("KeyCLoak in Nav", keycloak);
-
-  /*   const keycloak = getKeycloak(); // Use singleton instance
-  useEffect(() => {
-    keycloak.init({ onLoad: "check-sso" }).then(auth => {
-      setFlag(auth);
-    });
-  }, []); */
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

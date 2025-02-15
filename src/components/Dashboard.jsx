@@ -31,6 +31,8 @@ const Dashboard = () => {
     "/FB716-x-298.jpg",
     "/FB2_716x298-new.jpg",
     "/FB3_XCL_716x298-new.jpg",
+    "/LOCC-716x298-30Jan.jpg",
+    "/FB5_716-298-20Jan.png",
   ];
 
   /*   const images = [
@@ -63,30 +65,14 @@ const Dashboard = () => {
 
   return (
     <>
-    <main className="App">
-    <div className="max-w-lg mx-auto">
-        <Carousel>
+      {/* Carousel Section */}
+      <div className="max-w-2xl mx-auto">
+        <Carousel autoSlide={true} autoSlideInterval={3000}>
           {[...images.map((s, i) => <img key={i} src={s} />)]}
-
-          {/*  {images.map((img, index) => (
-            <div key={index}>
-              <img
-                src={img}
-                alt="Offer 1"
-                style={{
-                  width: "100%",
-                  borderRadius: "8px",
-                }}
-              />
-            </div>
-          ))} */}
         </Carousel>
       </div>
-    </main>
 
       <Container maxWidth="lg" sx={{ marginTop: 4 }}>
-        {/* Carousel Section */}
-
         {/* Offers Section */}
         <Box>
           <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
