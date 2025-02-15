@@ -7,7 +7,6 @@ import {
   Grid2,
   Container,
 } from "@mui/material";
-//import Slider from "react-slick";
 import Carousel from "./Carousel";
 /* import img1 from "../assets/FB716-x-298.jpg";
 import img2 from "../assets/FB2_716x298-new.jpg";
@@ -67,7 +66,7 @@ const Dashboard = () => {
     <>
       {/* Carousel Section */}
       <div className="max-w-2xl mx-auto">
-        <Carousel autoSlide={true} autoSlideInterval={3000}>
+        <Carousel  autoSlide={true} autoSlideInterval={3000}>
           {[...images.map((s, i) => <img key={i} src={s} />)]}
         </Carousel>
       </div>

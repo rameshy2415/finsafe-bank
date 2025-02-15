@@ -7,7 +7,7 @@ const Footer = () => {
         <Grid2 container spacing={4}>
           {/* About Section */}
           <Grid2 item size={{xs:12, sm:8, md:12}} sx={{textAlign: 'center'}}> 
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" className="text-blue-500" gutterBottom>
               About Us
             </Typography>
             <Typography variant="body2">
@@ -17,7 +17,7 @@ const Footer = () => {
 
           {/* Quick Links Section */}
           <Grid2 item size={{xs:12, sm:8,md:12}} sx={{textAlign: 'center'}}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom className="text-blue-500">
               Quick Links
             </Typography>
             <Link href="#dashboard" color="inherit" underline="hover" display="block">
@@ -37,7 +37,7 @@ const Footer = () => {
 
           {/* Contact Section */}
           <Grid2 item size={{xs:12, sm:8, md:12}} sx={{textAlign: 'center'}}>
-            <Typography variant="h6"  gutterBottom>
+            <Typography variant="h6"  gutterBottom className="text-blue-500">
               Contact Us
             </Typography>
             <Typography variant="body2">Email: support@bankapp.com</Typography>
