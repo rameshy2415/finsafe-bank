@@ -7,15 +7,16 @@ import {
   Grid2,
   Container,
 } from "@mui/material";
-import Slider from "react-slick";
-/* import img from "../assets/FB716-x-298.jpg";
+//import Slider from "react-slick";
+import Carousel from "./Carousel";
+/* import img1 from "../assets/FB716-x-298.jpg";
 import img2 from "../assets/FB2_716x298-new.jpg";
-import img3 from "../assets/FB3_XCL_716x298-new.jpg"; */
-/* import img4 from "../assets/LOCC-716x298-30Jan.jpg"
+import img3 from "../assets/FB3_XCL_716x298-new.jpg"; 
+import img4 from "../assets/LOCC-716x298-30Jan.jpg"
 import img5 from "../assets/FB5_716-298-20Jan.png" */
 
 const Dashboard = () => {
-  const sliderSettings = {
+  /* const sliderSettings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -24,15 +25,21 @@ const Dashboard = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     width: 345,
-  };
+  }; */
 
   const images = [
     "/FB716-x-298.jpg",
     "/FB2_716x298-new.jpg",
     "/FB3_XCL_716x298-new.jpg",
-    "/LOCC-716x298-30Jan.jpg",
-    "/FB5_716-298-20Jan.png",
   ];
+
+  /*   const images = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+  ]; */
 
   const offers = [
     {
@@ -55,109 +62,74 @@ const Dashboard = () => {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: 4 }}>
-      {/* Carousel Section */}
-      <Box sx={{ marginBottom: 4 }}>
-        <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-          Latest Announcements
-        </Typography>
+    <>
+    <main className="App">
+    <div className="max-w-lg mx-auto">
+        <Carousel>
+          {[...images.map((s, i) => <img key={i} src={s} />)]}
 
-        <Grid2
-          container
-          spacing={3}
-          sx={{
-            justifyContent: "center",
-            alignItems: "center",
-            mx: 'auto'
-          }}
-        >
-          <Grid2 item xs={12} sm={6} md={4}>
-            <Card sx={{ boxShadow: 0 }}>
-              <CardContent>
-                <Slider {...sliderSettings}>
-                  {images.map((img, index) => (
-                    <div key={index}>
-                      <img
-                        src={img}
-                        alt="Offer 1"
-                        style={{
-                          width: "100%",
-                          borderRadius: "8px",
-                          "object-fit": "cover",
-                        }}
+          {/*  {images.map((img, index) => (
+            <div key={index}>
+              <img
+                src={img}
+                alt="Offer 1"
+                style={{
+                  width: "100%",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
+          ))} */}
+        </Carousel>
+      </div>
+    </main>
+
+      <Container maxWidth="lg" sx={{ marginTop: 4 }}>
+        {/* Carousel Section */}
+
+        {/* Offers Section */}
+        <Box>
+          <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+            Exclusive Offers
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Grid2 container spacing={3}>
+              {offers.map((offer, index) => (
+                <Grid2 item xs={12} sm={6} md={4} key={index}>
+                  <Card sx={{ maxWidth: 345 }}>
+                    <CardContent>
+                      <CardMedia
+                        component="img"
+                        alt={offer.title}
+                        height="140"
+                        image={offer.image}
                       />
-                    </div>
-                  ))}
-                  {/* <Box>
-                    <img
-                      src={img}
-                      alt="Offer 1"
-                      style={{ width: "100%", borderRadius: "8px" }}
-                    />
-                  </Box>
-                  <Box>
-                    <img
-                      src={img2}
-                      alt="Offer 2"
-                      style={{ width: "100%", borderRadius: "8px" }}
-                    />
-                  </Box>
-                  <Box>
-                    <img
-                      src={img3}
-                      alt="Offer 3"
-                      style={{ width: "100%", borderRadius: "8px" }}
-                    />
-                  </Box> */}
-                </Slider>
-              </CardContent>
-            </Card>
-          </Grid2>
-        </Grid2>
-      </Box>
 
-      {/* Offers Section */}
-      <Box>
-        <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-          Exclusive Offers
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Grid2 container spacing={3}>
-            {offers.map((offer, index) => (
-              <Grid2 item xs={12} sm={6} md={4} key={index}>
-                <Card sx={{ maxWidth: 345 }}>
-                  <CardContent>
-                    <CardMedia
-                      component="img"
-                      alt={offer.title}
-                      height="140"
-                      image={offer.image}
-                    />
-
-                    <Typography
-                      variant="h6"
-                      component="div"
-                      sx={{ fontWeight: "bold" }}
-                    >
-                      {offer.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {offer.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid2>
-            ))}
-          </Grid2>
+                      <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ fontWeight: "bold" }}
+                      >
+                        {offer.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {offer.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid2>
+              ))}
+            </Grid2>
+          </Box>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </>
   );
 };
 

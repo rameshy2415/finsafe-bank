@@ -1,62 +1,158 @@
-// src/components/Dashboard.js
-import React from 'react';
-import { Card, CardContent, Typography, Grid2, Button, Box } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Grid2,
+  Container,
+} from "@mui/material";
+//import Slider from "react-slick";
+import Carousel from "./Carousel";
+/* import img1 from "../assets/FB716-x-298.jpg";
+import img2 from "../assets/FB2_716x298-new.jpg";
+import img3 from "../assets/FB3_XCL_716x298-new.jpg"; 
+import img4 from "../assets/LOCC-716x298-30Jan.jpg"
+import img5 from "../assets/FB5_716-298-20Jan.png" */
 
 const Dashboard = () => {
+  /* const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    width: 345,
+  }; */
+
+  const images = [
+    "/FB716-x-298.jpg",
+    "/FB2_716x298-new.jpg",
+    "/FB3_XCL_716x298-new.jpg",
+  ];
+
+  /*   const images = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+  ]; */
+
+  const offers = [
+    {
+      title: "0% Interest for 12 Months",
+      description:
+        "Apply for a credit card today and enjoy 0% interest on purchases for the first 12 months.",
+      image: "https://via.assets.so/img.jpg?w=300&h=200&tc=blue",
+    },
+    {
+      title: "Save More with Fixed Deposits",
+      description:
+        "Earn up to 8% interest on fixed deposits for 5 years or more.",
+      image: "https://via.assets.so/img.jpg?w=300&h=200&tc=blue",
+    },
+    {
+      title: "Personal Loan Offers",
+      description: "Get a personal loan at an interest rate as low as 10%.",
+      image: "https://via.assets.so/img.jpg?w=300&h=200&tc=blue",
+    },
+  ];
+
   return (
-    <Box sx={{ padding: 2 }}>
-      <Typography variant="h4" gutterBottom>
-        Welcome to Your Dashboard
-      </Typography>
-      
-      {/* Account Summary Section */}
-      <Grid2 container spacing={3} sx={{ marginBottom: 3 }}>
-        <Grid2 item size={{xs:12,sm:6,md:4}}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" color="textSecondary">Checking</Typography>
-              <Typography variant="h5">$1500</Typography>
-            </CardContent>
-          </Card>
+    <Container maxWidth="lg" sx={{ marginTop: 4 }}>
+      {/* Carousel Section */}
+      <Box sx={{ marginBottom: 4 }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+          Latest Announcements
+        </Typography>
+
+        <Grid2
+          container
+          spacing={3}
+        >
+          <Grid2 item xs={12} sm={6} md={4}>
+            <Card sx={{ boxShadow: 0 }}>
+              <CardContent>
+                <Carousel>
+                  {images.map((img, index) => (
+                    <div key={index}>
+                      <img
+                        src={img}
+                        alt="Offer 1"
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px",
+                        }}
+                      />
+                    </div>
+                  ))}
+                </Carousel>
+
+                {/* <Slider {...sliderSettings}>
+                  {images.map((img, index) => (
+                    <div key={index}>
+                      <img
+                        src={img}
+                        alt="Offer 1"
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px",
+                        }}
+                      />
+                    </div>
+                  ))}
+                </Slider> */}
+              </CardContent>
+            </Card>
+          </Grid2>
         </Grid2>
-        <Grid2 item size={{xs:12,sm:6,md:4}}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" color="textSecondary">Savings</Typography>
-              <Typography variant="h5">$2500</Typography>
-            </CardContent>
-          </Card>
-        </Grid2>
-      </Grid2>
-      
-      {/* Recent Transactions Section */}
-      <Typography variant="h6" gutterBottom>
-        Recent Transactions
-      </Typography>
-      <Card sx={{ marginBottom: 3 }}>
-        <CardContent>
-          <Typography>12/19/2024 | Starbucks | -$10</Typography>
-          <Typography>12/18/2024 | PayPal | -$50</Typography>
-          <Typography>12/17/2024 | Deposit | +$500</Typography>
-        </CardContent>
-      </Card>
-      
-      {/* Quick Actions Section */}
-      <Typography variant="h6" gutterBottom>
-        Quick Actions
-      </Typography>
-      <Grid2 container spacing={2}>
-        <Grid2 item>
-          <Button variant="contained" color="primary">Transfer Money</Button>
-        </Grid2>
-        <Grid2 item>
-          <Button variant="contained" color="secondary">Pay Bills</Button>
-        </Grid2>
-        <Grid2 item>
-          <Button variant="contained" color="success">Deposit Check</Button>
-        </Grid2>
-      </Grid2>
-    </Box>
+      </Box>
+
+      {/* Offers Section */}
+      <Box>
+        <Typography variant="h5" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+          Exclusive Offers
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Grid2 container spacing={3}>
+            {offers.map((offer, index) => (
+              <Grid2 item xs={12} sm={6} md={4} key={index}>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardContent>
+                    <CardMedia
+                      component="img"
+                      alt={offer.title}
+                      height="140"
+                      image={offer.image}
+                    />
+
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      sx={{ fontWeight: "bold" }}
+                    >
+                      {offer.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {offer.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid2>
+            ))}
+          </Grid2>
+        </Box>
+      </Box>
+    </Container>
   );
 };
 
