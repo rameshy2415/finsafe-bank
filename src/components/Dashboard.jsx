@@ -30,6 +30,8 @@ const Dashboard = () => {
     "/FB716-x-298.jpg",
     "/FB2_716x298-new.jpg",
     "/FB3_XCL_716x298-new.jpg",
+    "/LOCC-716x298-30Jan.jpg",
+    "/FB5_716-298-20Jan.png",
   ];
 
   const offers = [
@@ -60,19 +62,31 @@ const Dashboard = () => {
           Latest Announcements
         </Typography>
 
-        <Grid2 container spacing={3}>
+        <Grid2
+          container
+          spacing={3}
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+            mx: 'auto'
+          }}
+        >
           <Grid2 item xs={12} sm={6} md={4}>
             <Card sx={{ boxShadow: 0 }}>
               <CardContent>
                 <Slider {...sliderSettings}>
                   {images.map((img, index) => (
-                    <Box
-                      key={index}
-                      component="img"
-                      src={img}
-                      alt={`Slide ${index + 1}`}
-                      sx={{ width: "100%", borderRadius: 2 }}
-                    />
+                    <div key={index}>
+                      <img
+                        src={img}
+                        alt="Offer 1"
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px",
+                          "object-fit": "cover",
+                        }}
+                      />
+                    </div>
                   ))}
                   {/* <Box>
                     <img

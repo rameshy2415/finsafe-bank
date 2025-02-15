@@ -25,8 +25,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import proPic from "../assets/1.jpg";
 
-//import userService from '../http/userService'
-
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -84,15 +82,17 @@ const Navbar = () => {
 
   let profileMenu = (
     <Box>
-      <Button
-        size="small"
-        color="secondary"
-        onClick={handleClick}
-        sx={{ mr: 2 }}
-        startIcon={<Avatar src={proPic} sx={{ width: 24, height: 24 }} />}
-      >
-        {name}
-      </Button>
+      {auth && (
+        <Button
+          size="small"
+          color="secondary"
+          onClick={handleClick}
+          sx={{ mr: 2 }}
+          startIcon={<Avatar src={proPic} sx={{ width: 24, height: 24 }} />}
+        >
+          {name}
+        </Button>
+      )}
       <Menu anchorEl={anchorPEl} open={open} onClose={handleClose}>
         <MenuItem onClick={handleProfile}>
           <AccountCircleIcon color="secondary" sx={{ marginRight: 1 }} />{" "}
